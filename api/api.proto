@@ -1,0 +1,41 @@
+syntax = "proto3";
+package api;
+
+message SignUpRequest {
+    string Username = 1;
+    string password = 2;
+    string Phone = 3;
+    string Email = 4;
+}
+
+message SignUpResponse {
+    int64 Status = 1;
+    string Error = 2;
+}
+
+message SignInRequest {
+    string Ident = 1;
+    string Password = 2;
+}
+
+message SignInResponse {
+    int64 Status = 1;
+    string SessionID = 2;
+    string Error = 3;
+}
+
+message AuthSessionIDRequest {
+    string SessionID = 1;
+}
+
+message AuthSessionIDResponse {
+    int64 Status = 1;
+    string Error = 2;
+}
+
+service AuthService {
+    rpc SignUp(SignUpRequest) returns (SignUpResponse) {};
+    rpc SignIn(SignInRequest) returns (SignInResponse) {};
+    rpc AuthSessionID(AuthSessionIDRequest) returns (AuthSessionIDResponse) {};
+}
+
