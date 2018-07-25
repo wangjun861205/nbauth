@@ -3,20 +3,13 @@ package bkauth
 import (
 	"context"
 	"fmt"
-	"log"
 	"testing"
-	"time"
 
-	"./api"
-	"./client"
-	"./server"
+	"github.com/wangjun861205/nbauth/api"
+	"github.com/wangjun861205/nbauth/client"
 )
 
 func TestService(t *testing.T) {
-	go func() {
-		log.Fatal(server.Serve("127.0.0.1:9999", "./", "wangjun:Wt20110523@tcp(localhost:12345)/bk_dalian"))
-	}()
-	time.Sleep(3 * time.Second)
 	c, err := client.NewClient("127.0.0.1:9999")
 	if err != nil {
 		panic(err)

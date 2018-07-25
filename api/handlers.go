@@ -29,7 +29,7 @@ func InitManager(mysqlAddr string) error {
 }
 
 func NewServer(logPath string) (*Server, error) {
-	logger, err := nblogger.NewLogger(logPath, "bkauth", log.Llongfile|log.Ltime, 1*time.Minute, 200*nblogger.M, 5)
+	logger, err := nblogger.NewLogger(logPath, "bkauth", log.Ltime, 1*time.Minute, 200*nblogger.M, 5)
 	if err != nil {
 		return nil, err
 	}
@@ -37,6 +37,7 @@ func NewServer(logPath string) (*Server, error) {
 }
 
 func (s *Server) SignUp(ctx context.Context, req *SignUpRequest) (*SignUpResponse, error) {
+	s.logger.Log(fmt.Sprintf("username: %s, password: %s, phone: %s, email %s", req.Username, req.Password, req.Phone, req.Email))
 	user, err := UserManager.NewModel(
 		nborm.ArgMap{
 			"Username": req.Username,
