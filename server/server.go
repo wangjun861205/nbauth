@@ -3,7 +3,7 @@ package server
 import (
 	"net"
 
-	"../api"
+	"github.com/wangjun861205/nbauth/api"
 	"google.golang.org/grpc"
 )
 

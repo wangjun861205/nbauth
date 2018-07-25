@@ -1,7 +1,7 @@
 package client
 
 import (
-	"../api"
+	"github.com/wangjun861205/nbauth/api"
 	"google.golang.org/grpc"
 )
 
