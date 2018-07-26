@@ -37,15 +37,14 @@ func NewServer(logPath string) (*Server, error) {
 }
 
 func (s *Server) SignUp(ctx context.Context, req *SignUpRequest) (*SignUpResponse, error) {
-	s.logger.Log(fmt.Sprintf("username: %s, password: %s, phone: %s, email %s", req.Username, req.Password, req.Phone, req.Email))
 	user, err := UserManager.NewModel(
 		nborm.ArgMap{
 			"Username": req.Username,
-			"Password": req.Password,
+			"Password": fmt.Sprintf("%x", md5.Sum([]byte(req.Password))),
 			"Phone":    req.Phone,
 			"Email":    req.Email,
-			"Status":   0})
-
+			"Status":   0,
+		})
 	if err != nil {
 		s.logger.Log(err)
 		return nil, err

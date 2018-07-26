@@ -14,7 +14,11 @@ func TestService(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	resp, err := c.SignUp(context.Background(), &api.SignUpRequest{Username: "admin", Password: "Wt20110523", Phone: "13793148690", Email: "444055828@qq.com"})
+	resp, err := c.SignUp(context.Background(), &api.SignUpRequest{
+		Username: "wangjun",
+		Password: "Wt20110523",
+		Phone:    "13793148690",
+		Email:    "444055828@qq.com"})
 	if err != nil {
 		panic(err)
 	}

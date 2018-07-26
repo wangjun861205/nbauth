@@ -7,7 +7,7 @@ import (
 type User struct {
 	ID         *nborm.NBInt      `column:"id" auto_increment:"true" primary_key:"true"`
 	Username   *nborm.NBString   `column:"username" unique:"true"`
-	Password   *nborm.NBString   `column:"passowrd"`
+	Password   *nborm.NBString   `column:"password"`
 	Phone      *nborm.NBString   `column:"phone" unique:"true"`
 	Status     *nborm.NBInt      `column:"status"`
 	SessionID  *nborm.NBString   `column:"sessionid" unique:"true"`
