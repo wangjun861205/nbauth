@@ -66,7 +66,7 @@ func (s *Server) SignIn(ctx context.Context, req *SignInRequest) (*SignInRespons
 		return nil, err
 	}
 	user := u.(*User)
-	sessionID := fmt.Sprintf("%x", sha256.Sum256([]byte(user.Username.String()+user.Password.String())))
+	sessionID := fmt.Sprintf("%x", sha256.Sum256([]byte(user.Username.String()+user.Password.String()+time.Now().Format("20060102150405")+"notbear")))
 	expireTime := time.Now().Add(time.Hour * 24 * 30)
 	err = user.SessionID.Set(sessionID)
 	if err != nil {

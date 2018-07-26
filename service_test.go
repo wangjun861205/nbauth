@@ -14,13 +14,12 @@ func TestService(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	resp, err := c.SignUp(context.Background(), &api.SignUpRequest{
-		Username: "wangjun",
+	resp, err := c.SignIn(context.Background(), &api.SignInRequest{
+		Ident:    "wangjun",
 		Password: "Wt20110523",
-		Phone:    "13793148690",
-		Email:    "444055828@qq.com"})
+	})
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(resp)
+	fmt.Println(resp.Status)
 }
